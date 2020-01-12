@@ -1,5 +1,9 @@
 package com.yuzhou.entity;
-
+/**
+ * 用户表的实体类
+ * 创建了一个Sysuser类型的对象 ,DataArea类型对象
+ * 用于在网页上显示客户经理的姓名，地区名称
+ */
 
 
 public class ClientInfo {
@@ -26,7 +30,23 @@ public class ClientInfo {
 	private int clientState;
 	private String clientLoseReason;
 	private String clientLoseDate;
+	// sysUser 用于调用sysUser表中的客户经理姓名
+	private Sysuser sysUser = new Sysuser();
+	//dataArea 用于调用DataArea表中的daName地区名称
+	private DataArea dataArea = new DataArea();
 	
+	public DataArea getDataArea() {
+		return dataArea;
+	}
+	public void setDataArea(DataArea dataArea) {
+		this.dataArea = dataArea;
+	}
+	public Sysuser getSysUser() {
+		return sysUser;
+	}
+	public void setSysUser(Sysuser sysUser) {
+		this.sysUser = sysUser;
+	}
 	public String getClientCode() {
 		return clientCode;
 	}
