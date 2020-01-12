@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import com.yuzhou.entity.SaleChance;
 import com.yuzhou.entity.SalePlan;
 
 @Mapper
