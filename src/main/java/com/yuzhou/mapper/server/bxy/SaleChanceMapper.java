@@ -28,4 +28,7 @@ public interface SaleChanceMapper {
 	
 	@Delete("delete from SaleChance where chanceId=#{chanceId}")
 	public int deleteSaleChance(SaleChance saleChance);
+	
+	@Select("select * from SaleChance where chanceStatus=#{chanceStatus}")
+	public List<SaleChance> selectSaleChanceByChanceStatus(SaleChance saleChance);
 }
