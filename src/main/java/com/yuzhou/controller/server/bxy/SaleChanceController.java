@@ -45,4 +45,10 @@ public class SaleChanceController {
 	public int deleteSaleChance(@RequestBody SaleChance saleChance) {
 		return saleChanceService.deleteSaleChance(saleChance);
 	}
+
+	@RequestMapping("/selectSaleChanceByChanceStatus")
+	public List<SaleChance> selectSaleChanceByChanceStatus(SaleChance saleChance) {
+		return saleChanceService.selectSaleChanceByChanceStatus(saleChance);
+	}
+
 }
