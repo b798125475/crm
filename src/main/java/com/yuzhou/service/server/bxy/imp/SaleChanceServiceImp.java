@@ -48,4 +48,10 @@ public class SaleChanceServiceImp implements SaleChanceService {
 		return saleChanceMapper.deleteSaleChance(saleChance);
 	}
 
+	@Override
+	public List<SaleChance> selectSaleChanceByChanceStatus(SaleChance saleChance) {
+		// TODO Auto-generated method stub
+		return saleChanceMapper.selectSaleChanceByChanceStatus(saleChance);
+	}
+
 }
