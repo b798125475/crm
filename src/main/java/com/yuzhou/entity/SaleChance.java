@@ -14,6 +14,22 @@ public class SaleChance {
 	private int chanceDueId;
 	private String chanceDueDate;
 	private int chanceStatus;
+	
+	//作用于分页
+	private int beginNum;
+	private int maxPageNum;
+	public int getBeginNum() {
+		return beginNum;
+	}
+	public void setBeginNum(int beginNum) {
+		this.beginNum = beginNum;
+	}
+	public int getMaxPageNum() {
+		return maxPageNum;
+	}
+	public void setMaxPageNum(int maxPageNum) {
+		this.maxPageNum = maxPageNum;
+	}
 	public int getChanceId() {
 		return chanceId;
 	}
