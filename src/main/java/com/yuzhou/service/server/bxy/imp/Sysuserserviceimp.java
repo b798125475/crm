@@ -7,14 +7,16 @@ import org.springframework.transaction.annotation.Transactional;
 import com.yuzhou.entity.Sysuser;
 import com.yuzhou.mapper.server.bxy.SysuserMapper;
 import com.yuzhou.service.server.bxy.Sysuserservice;
+
 @Service
 @Transactional
 public class Sysuserserviceimp implements Sysuserservice {
-    @Autowired 
+	@Autowired
 	SysuserMapper sm;
+
 	@Override
 	public Sysuser login(Sysuser u) {
-		
+
 		return sm.login(u);
 	}
 
