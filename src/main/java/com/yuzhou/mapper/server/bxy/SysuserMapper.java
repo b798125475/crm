@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Select;
 import com.yuzhou.entity.Sysuser;
 @Mapper
 public interface SysuserMapper {
-    @Select("select * from sysUser where userRoleId  in (2,3) and userName= #{userName} and userPassword=#{userPassword}")
+    @Select("select * from sysUser where username = #{username} and password= #{userpassword}")
 	public Sysuser login(Sysuser u);
 	
 }
