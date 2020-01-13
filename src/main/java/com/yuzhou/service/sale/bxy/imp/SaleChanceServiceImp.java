@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yuzhou.entity.SaleChance;
-import com.yuzhou.mapper.server.bxy.SaleChanceMapper;
+import com.yuzhou.mapper.sale.bxy.SaleChanceMapper;
 import com.yuzhou.service.sale.bxy.SaleChanceService;
 
 
