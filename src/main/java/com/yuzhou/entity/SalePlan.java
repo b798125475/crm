@@ -5,6 +5,12 @@ public class SalePlan {
 	private int planChcId;
 	private String planTodo;
 	private String planResult;
+	
+	
+	//作用于分页
+	private int beginNum;
+	private int maxPageNum;
+	
 	public int getPlanId() {
 		return planId;
 	}
@@ -31,6 +37,18 @@ public class SalePlan {
 	}
 	public SalePlan() {
 		super();
+	}
+	public int getBeginNum() {
+		return beginNum;
+	}
+	public void setBeginNum(int beginNum) {
+		this.beginNum = beginNum;
+	}
+	public int getMaxPageNum() {
+		return maxPageNum;
+	}
+	public void setMaxPageNum(int maxPageNum) {
+		this.maxPageNum = maxPageNum;
 	}
 	public SalePlan(int planId, int planChcId, String planTodo, String planResult) {
 		super();
