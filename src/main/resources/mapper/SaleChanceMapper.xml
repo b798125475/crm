@@ -1,35 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yuzhou.mapper.server.bxy.SaleChanceMapper">
-    <select id="selectSaleChancePaging" parameterType="saleChance" resultType="list">
-   	    select * from SaleChance 
-   	    <where>
-   	        <if test="chanceCustName!=null and chanceCustName!=''">
-   	            and chanceCustName like concat('%',#{chanceCustName},'%')
-   	        </if>
-   	        <if test="chanceTitle!=null and chanceTitle!=''">
-   	            and chanceTitle like concat('%',#{chanceTitle},'%')
-   	        </if>
-   	        <if test="chanceLinkman!=null and chanceLinkman!=''">
-   	            and chanceLinkman like concat('%',#{chanceLinkman},'%')
-   	        </if>
-   	    </where>
-   	    order by chanceId desc
-   	    limit #{beginNum},#{maxPageNum}
-    </select>
-    <select id="selectSaleChanceCount" parameterType="saleChance" resultType="int">
-        select count(*) from SaleChance
-        ，	 <where>
-   	        <if test="chanceCustName!=null and chanceCustName!=''">
-   	            and chanceCustName like concat('%',#{chanceCustName},'%')
-   	        </if>
-   	        <if test="chanceTitle!=null and chanceTitle!=''">
-   	            and chanceTitle like concat('%',#{chanceTitle},'%')
-   	        </if>
-   	        <if test="chanceLinkman!=null and chanceLinkman!=''">
-   	            and chanceLinkman like concat('%',#{chanceLinkman},'%')
-   	        </if>
-   	    </where>
-    </select>
+<mapper namespace="com.yuzhou.mapper.sale.bxy.SaleChanceMapper">
+	<select id="selectSaleChancePaging" parameterType="SaleChance"
+		resultType="SaleChance">
+		select * from SaleChance
+		<where>
+			chanceStatus = #{chanceStatus}
+			<if test="chanceCustName!=null and chanceCustName!=''">
+				and chanceCustName like concat('%',#{chanceCustName},'%')
+			</if>
+			<if test="chanceTitle!=null and chanceTitle!=''">
+				and chanceTitle like concat('%',#{chanceTitle},'%')
+			</if>
+			<if test="chanceLinkman!=null and chanceLinkman!=''">
+				and chanceLinkman like concat('%',#{chanceLinkman},'%')
+			</if>
+		</where>		
+		order by chanceId desc
+		limit #{beginNum},#{maxPageNum}
+	</select>
+	<select id="selectSaleChanceCount" parameterType="SaleChance"
+		resultType="int">
+		select count(*) from SaleChance
+		<where>
+			chanceStatus = #{chanceStatus}
+			<if test="chanceCustName!=null and chanceCustName!=''">
+				and chanceCustName like concat('%',#{chanceCustName},'%')
+			</if>
+			<if test="chanceTitle!=null and chanceTitle!=''">
+				and chanceTitle like concat('%',#{chanceTitle},'%')
+			</if>
+			<if test="chanceLinkman!=null and chanceLinkman!=''">
+				and chanceLinkman like concat('%',#{chanceLinkman},'%')
+			</if>
+		</where>
+	</select>
 </mapper>
