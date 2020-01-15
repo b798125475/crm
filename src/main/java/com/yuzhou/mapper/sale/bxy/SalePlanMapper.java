@@ -19,9 +19,15 @@ public interface SalePlanMapper {
 	@Insert("insert into SalePlan values(null,#{planChcId},#{planTodo},#{planResult})")
 	public int insertSalePlan(SalePlan salePlan);
 	
-	@Update("update SalePlan set planChcId=#{planChcId},planTodo=#{planTodo},planResult=#{planResult} where planChcId=#{planChcId}")
+	@Update("update SalePlan set planChcId=#{planChcId},planTodo=#{planTodo},planResult=#{planResult} where planId=#{planId}")
 	public int updateSalePlan(SalePlan salePlan);
 	
-	@Delete("delete from SalePlan where planChcId=#{planChcId}")
+	@Delete("delete from SalePlan where planId=#{planId}")
 	public int deleteSalePlan(SalePlan salePlan);
+	
+	@Select("select * from SalePlan where planChcId=#{planChcId}")
+	public List<SalePlan> selectSalePlanByplanChcId(SalePlan salePlan);
+	
+	@Select("select * from SalePlan where planId=#{planId}")
+	public SalePlan selectSalePlanByplanId(SalePlan salePlan);
 }
