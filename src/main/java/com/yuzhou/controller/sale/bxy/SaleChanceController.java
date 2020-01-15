@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.yuzhou.entity.SaleChance;
+import com.yuzhou.entity.Sysuser;
 import com.yuzhou.service.sale.bxy.SaleChanceService;
 
 
@@ -48,8 +49,27 @@ public class SaleChanceController {
 	}
 
 	@RequestMapping("/selectSaleChanceByChanceStatus")
-	public List<SaleChance> selectSaleChanceByChanceStatus(SaleChance saleChance) {
+	public List<SaleChance> selectSaleChanceByChanceStatus(@RequestBody SaleChance saleChance) {
 		return saleChanceService.selectSaleChanceByChanceStatus(saleChance);
+	}
+	
+	@RequestMapping("/selectSaleChanceBychanceId")
+	public SaleChance selectSaleChanceBychanceId(@RequestBody SaleChance saleChance) {
+		return saleChanceService.selectSaleChanceBychanceId(saleChance);
+	}
+	
+	@RequestMapping("/selectSysUserByuserId")
+	public Sysuser selectSysUserByuserId(@RequestBody Sysuser sysUser) {
+		return saleChanceService.selectSysUserByuserId(sysUser);
+	}
+	
+	@RequestMapping("/selectSysUserByuserName")
+	public Sysuser selectSysUserByuserName(@RequestBody Sysuser sysUser) {
+		return saleChanceService.selectSysUserByuserName(sysUser);
+	}
+	@RequestMapping("/selectSysUserByuserRoleId")
+	public List<Sysuser> selectSysUserByuserRoleId(@RequestBody Sysuser sysUser) {
+		return saleChanceService.selectSysUserByuserRoleId(sysUser);
 	}
 
 }
