@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.yuzhou.entity.SaleChance;
+import com.yuzhou.entity.Sysuser;
 import com.yuzhou.mapper.sale.bxy.SaleChanceMapper;
 import com.yuzhou.service.sale.bxy.SaleChanceService;
 
@@ -53,6 +54,30 @@ public class SaleChanceServiceImp implements SaleChanceService {
 	public List<SaleChance> selectSaleChanceByChanceStatus(SaleChance saleChance) {
 		// TODO Auto-generated method stub
 		return saleChanceMapper.selectSaleChanceByChanceStatus(saleChance);
+	}
+
+	@Override
+	public SaleChance selectSaleChanceBychanceId(SaleChance saleChance) {
+		// TODO Auto-generated method stub
+		return saleChanceMapper.selectSaleChanceBychanceId(saleChance);
+	}
+
+	@Override
+	public Sysuser selectSysUserByuserId(Sysuser sysUser) {
+		// TODO Auto-generated method stub
+		return saleChanceMapper.selectSysUserByuserId(sysUser);
+	}
+
+	@Override
+	public Sysuser selectSysUserByuserName(Sysuser sysUser) {
+		// TODO Auto-generated method stub
+		return saleChanceMapper.selectSysUserByuserName(sysUser);
+	}
+
+	@Override
+	public List<Sysuser> selectSysUserByuserRoleId(Sysuser sysUser) {
+		// TODO Auto-generated method stub
+		return saleChanceMapper.selectSysUserByuserRoleId(sysUser);
 	}
 
 }
