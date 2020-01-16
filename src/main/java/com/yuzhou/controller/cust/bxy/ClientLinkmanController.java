@@ -1,5 +1,7 @@
 package com.yuzhou.controller.cust.bxy;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +17,7 @@ public class ClientLinkmanController {
 
 	// 查询客户联系人 通过客户Id查询
 	@RequestMapping("/selectClientLinkmanById")
-	public ClientLinkman selectClientlinkmanById(@RequestBody ClientLinkman clientLinkman) throws Exception {
+	public List<ClientLinkman> selectClientlinkmanById(@RequestBody ClientLinkman clientLinkman) throws Exception {
 		return clientLinkmanService.selectClientlinkmanById(clientLinkman);
 	}
 
@@ -35,5 +37,11 @@ public class ClientLinkmanController {
 	@RequestMapping("/deleteClientLinkman")
 	public int deleteClientLinkman(@RequestBody ClientLinkman clientLinkman) throws Exception{
 		return clientLinkmanService.deleteClientLinkman(clientLinkman);	
+	}
+	
+	//通过ID查询客户联系人
+	@RequestMapping("/selectclientLinkmanByIdObj")
+	public ClientLinkman selectclientLinkmanById(@RequestBody ClientLinkman clientLinkman) throws Exception{
+		return clientLinkmanService.selectclientLinkmanById(clientLinkman);
 	}
 }
