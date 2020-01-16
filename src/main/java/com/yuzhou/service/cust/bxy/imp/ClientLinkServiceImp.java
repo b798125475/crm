@@ -1,5 +1,7 @@
 package com.yuzhou.service.cust.bxy.imp;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +16,7 @@ public class ClientLinkServiceImp implements ClientLinkmanService {
 
 	// 通过客户编号查询客户联系人
 	@Override
-	public ClientLinkman selectClientlinkmanById(ClientLinkman clientLinkman) {
+	public List<ClientLinkman> selectClientlinkmanById(ClientLinkman clientLinkman) {
 		// TODO Auto-generated method stub
 		return clientLinkmanMapper.selectClientlinkmanById(clientLinkman);
 	}
@@ -38,6 +40,12 @@ public class ClientLinkServiceImp implements ClientLinkmanService {
 	public int deleteClientLinkman(ClientLinkman clientLinkman) {
 		// TODO Auto-generated method stub
 		return clientLinkmanMapper.deleteClientLinkman(clientLinkman);
+	}
+
+	@Override
+	public ClientLinkman selectclientLinkmanById(ClientLinkman clientLinkman) {
+		// TODO Auto-generated method stub
+		return clientLinkmanMapper.selectclientLinkmanById(clientLinkman);
 	}
 	
 	
