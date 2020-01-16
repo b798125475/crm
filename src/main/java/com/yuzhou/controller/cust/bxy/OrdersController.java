@@ -15,7 +15,7 @@ public class OrdersController {
 	@Autowired
 	private OrdersService ordersService;
 
-	//查询用户名单的方法
+	//通过ID查询用户历史订单的方法
 	@RequestMapping("/selectOrders")
 	public List<Orders> selectOrders(@RequestBody Orders orders) throws Exception {
 		return ordersService.selectOrders(orders);
