@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuzhou.mapper.cust.bxy.LastClientOrderMapper">
+	<resultMap type="lastClientOrders" id="lastOrders">
+		<id column="ordersId" property="ordersId"/>
+		<result column="ordersDate" property="ordersDate"/>
+		<result column="clientCode" property="clientCode"/>
+		<association property="clientInfo" javaType="ClientInfo">
+			<id column="clclientCode" property="clientCode"/>
+			<result column="clientName" property="clientName"/>
+		</association>
+		<association property="sysUser" javaType="Sysuser">
+			<id column="userId" property="userId"/>
+			<result column="userName" property="userName"/>
+		</association>
+	</resultMap>
+	<select id="selectLastOrders" parameterType="lastClientOrders" resultMap="lastOrders" >
+		select 
+		l.*,cl.*,sy.*
+		from
+		lastclientorders l
+		right join clientinfo cl 
+		on 
+		cl.clientCode=l.clientCode
+		left join sysuser sy 
+		on 
+		cl.clientCustId=sy.userRoleId
+		<where>
+			<if test="clientInfo.clientName!=null and clientInfo.clientName!=''">
+				and cl.clientName like concat('%',#{clientName},'%')
+			</if>
+			
+			<if test="sysUser.userName!=null and sysUser.userName!=''">
+				and sy.username like concat('%',#{username},'%')
+			</if>
+		</where>
+		and ordersDate &lt; date_sub(now(),interval 6 month)
+		limit #{beginNum},#{maxPageNum} 
+	</select>
+	
+	<select id="selectLastClientOrdersCount" parameterType="lastClientOrders" resultType="int">
+		select
+		count(*)
+		from
+		lastclientorders l
+		left join clientinfo cl
+		on
+		cl.clientCode=l.clientCode
+		left join sysuser sy
+		on
+		cl.clientCustId=sy.userRoleId
+		<where>
+			<if test="clientInfo.clientName!=null and clientInfo.clientName!=''">
+				and cl.clientName like concat('%',#{clientName},'%')
+			</if>
+			
+			<if test="sysUser.userName!=null and sysUser.userName!=''">
+				and sy.username like concat('%',#{username},'%')
+			</if>
+		</where>
+		and ordersDate &lt; date_sub(now(),interval 6 month)
+	</select>
+	
+	
+</mapper>
