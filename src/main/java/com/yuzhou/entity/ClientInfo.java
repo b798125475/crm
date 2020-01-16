@@ -34,7 +34,31 @@ public class ClientInfo {
 	private Sysuser sysUser = new Sysuser();
 	//dataArea 用于调用DataArea表中的daName地区名称
 	private DataArea dataArea = new DataArea();
+	//用于区分客户等级的属性
+	private DataClientLevel dataClientLevel;
 	
+	//转用于分页的分两个属性
+	private Integer beginNum;
+	private Integer maxPageNum;
+	
+	public DataClientLevel getDataClientLevel() {
+		return dataClientLevel;
+	}
+	public void setDataClientLevel(DataClientLevel dataClientLevel) {
+		this.dataClientLevel = dataClientLevel;
+	}
+	public Integer getBeginNum() {
+		return beginNum;
+	}
+	public void setBeginNum(Integer beginNum) {
+		this.beginNum = beginNum;
+	}
+	public Integer getMaxPageNum() {
+		return maxPageNum;
+	}
+	public void setMaxPageNum(Integer maxPageNum) {
+		this.maxPageNum = maxPageNum;
+	}
 	public DataArea getDataArea() {
 		return dataArea;
 	}
