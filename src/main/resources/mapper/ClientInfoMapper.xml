@@ -20,19 +20,20 @@
 	<select id="selectClient" resultMap="infoResult">
 		select
 		cl.clientCode,cl.clientName,da.daName,sy.userName,cl.clientLevelId
-		from clientinfo cl,sysuser sy,dataarea da
+		from clientinfo cl,sysuser sy,dataarea da 
 		where cl.clientAreaId=da.daId
 		and
 		cl.clientCustId=sy.userRoleId
+
 	</select>
 
 	<!-- 多条件模糊查询 -->
 	<resultMap type="clientInfo" id="clientpagingResult">
 		<id column="clientCode" property="clientCode" />
 		<result column="clientName" property="clientName" />
-		<result column="clietnLevelId" property="clietnLevelId" />
+		<result column="clientLevelId" property="clientLevelId" />
 		<result column="clientAreaId" property="clientAreaId" />
-		<association property="sysuser" javaType="Sysuser">
+		<association property="sysUser" javaType="Sysuser">
 			<id column="userId" property="userId" />
 			<result column="userName" property="userName" />
 		</association>
@@ -40,35 +41,48 @@
 			<id column="daId" property="daId" />
 			<result column="daName" property="daName" />
 		</association>
+		<association property="dataClientLevel" javaType="DataClientLevel">
+			<id column="dclId" property="dclId" />
+			<result column="dclName" property="dclName" />
+		</association>
 	</resultMap>
-	<select id="selectClientPaging" resultMap="clientpagingResult">
+	<select id="selectClientPaging" parameterType="clientInfo" resultMap="clientpagingResult">
 		select
-		cl.clientCode,cl.clientName,da.daName,sy.userName,cl.clientLevelId
-		from clientinfo cl,sysuser sy,dataarea da
-		where cl.clientAreaId=da.daId
-		and
-		cl.clientCustId=sy.userRoleId
-		and
+		cl.clientCode,cl.clientName,da.daName,sy.userName,dcl.dclName
+		from clientinfo cl
+		left join sysuser sy on cl.clientCustId=sy.userRoleId
+		left join dataarea da on cl.clientAreaId=da.daId
+		left join dataclientlevel dcl on cl.clientLevelId=dcl.dclid
 		<where>
 			<if test="clientCode!=null and clientCode!=''">
 				and cl.clientCode like concat('%',#{clientCode},'%')
 			</if>
 			<if test="clientName!=null and clientName!=''">
 				and cl.clientName like concat('%',#{clientName},'%')
-			</if>
-			<if test="daId!=null and daId!=''">
-				and da.daId like concat('%',#{daId},'%')
-			</if>
-			<if test="userId!=null and userId!=''">
-				and sy.userId like concat('%',#{userId},'%')
-			</if>
-			<if test="clietnLevelId!=null and clietnLevelId!=''">
-				and cl.clietnLevelId like concat('%',#{clietnLevelId},'%')
+			</if> 
+			
+			<if test="clientLevelId!=null and clientLevelId!=''">
+				and cl.clientLevelId like concat('%',#{clientLevelId},'%')
 			</if>
 		</where>
 		order by cl.clientCode
 		limit #{beginNum},#{maxPageNum}
 	</select>
 
+
+	<select id="selectClientCount" parameterType="clientInfo" resultType="int">
+		SELECT COUNT(*) from clientinfo
+		<where>
+			<if test="clientCode!=null and clientCode!=''">
+				and clientCode like concat('%',#{clientCode},'%')
+			</if>
+			<if test="clientName!=null and clientName!=''">
+				and clientName like concat('%',#{clientName},'%')
+			</if>
+			<if test="clientLevelId!=null and clientLevelId!=''">
+				and clietnLevelId like concat('%',#{clietnLevelId},'%')
+			</if>
+		</where>
+	</select>
 
 </mapper>
